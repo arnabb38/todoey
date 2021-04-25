@@ -1,11 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
+import 'package:provider/provider.dart';
+import 'package:todoey/models/task_data.dart';
 
 class AddTaskScreen extends StatelessWidget {
-  final Function addTaskCallBack;
-
-  AddTaskScreen(this.addTaskCallBack);
-
   @override
   Widget build(BuildContext context) {
     String newTaskTitle;
@@ -40,15 +38,13 @@ class AddTaskScreen extends StatelessWidget {
               },
             ),
             ElevatedButton(
+              child: Text("Add"),
               onPressed: () {
-                addTaskCallBack(newTaskTitle);
+                // TODO: add a null safety for empty textField
+                Provider.of<TaskData>(context, listen: false).addTask(
+                    newTaskTitle); // added "listen: false" to fix the functionality
+                Navigator.pop(context);
               },
-              child: Text(
-                "Add",
-                style: TextStyle(
-                    // color: Colors.white,
-                    ),
-              ),
             ),
           ],
         ),
