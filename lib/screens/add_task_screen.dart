@@ -40,9 +40,10 @@ class AddTaskScreen extends StatelessWidget {
             ElevatedButton(
               child: Text("Add"),
               onPressed: () {
-                // TODO: add a null safety for empty textField
-                Provider.of<TaskData>(context, listen: false).addTask(
-                    newTaskTitle); // added "listen: false" to fix the functionality
+                if (newTaskTitle != null) {
+                  Provider.of<TaskData>(context, listen: false).addTask(
+                      newTaskTitle); // added "listen: false" to fix the functionality
+                }
                 Navigator.pop(context);
               },
             ),
