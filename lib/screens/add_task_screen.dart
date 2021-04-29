@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/painting.dart';
 import 'package:provider/provider.dart';
@@ -8,46 +9,48 @@ class AddTaskScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     String newTaskTitle;
 
-    return Container(
-      color: Color(0xFF757575),
+    return SingleChildScrollView(
       child: Container(
-        padding: const EdgeInsets.all(20.0),
-        decoration: BoxDecoration(
-          color: Colors.white,
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20.0),
-            topRight: Radius.circular(20.0),
+        color: Color(0xFF757575),
+        child: Container(
+          padding: const EdgeInsets.all(20.0),
+          decoration: BoxDecoration(
+            color: Colors.white,
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(20.0),
+              topRight: Radius.circular(20.0),
+            ),
           ),
-        ),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.stretch,
-          children: [
-            Text(
-              "Add Task",
-              textAlign: TextAlign.center,
-              style: TextStyle(
-                fontSize: 30.0,
-                color: Colors.lightBlueAccent,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+              Text(
+                "Add Task",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  fontSize: 18.0,
+                  color: Colors.lightBlueAccent,
+                ),
               ),
-            ),
-            TextField(
-              autofocus: true,
-              textAlign: TextAlign.center,
-              onChanged: (newText) {
-                newTaskTitle = newText;
-              },
-            ),
-            ElevatedButton(
-              child: Text("Add"),
-              onPressed: () {
-                if (newTaskTitle != null) {
-                  Provider.of<TaskData>(context, listen: false).addTask(
-                      newTaskTitle); // added "listen: false" to fix the functionality
-                }
-                Navigator.pop(context);
-              },
-            ),
-          ],
+              TextField(
+                autofocus: true,
+                textAlign: TextAlign.center,
+                onChanged: (newText) {
+                  newTaskTitle = newText;
+                },
+              ),
+              ElevatedButton(
+                child: Text("Add"),
+                onPressed: () {
+                  if (newTaskTitle != null && newTaskTitle.length > 1) {
+                    Provider.of<TaskData>(context, listen: false).addTask(
+                        newTaskTitle); // added "listen: false" to fix the functionality
+                  }
+                  Navigator.pop(context);
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );

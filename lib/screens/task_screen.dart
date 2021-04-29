@@ -27,14 +27,14 @@ class TaskScreen extends StatelessWidget {
           Container(
             child: Padding(
               padding: const EdgeInsets.only(
-                  top: 60.0, bottom: 30.0, left: 30.0, right: 30.0),
+                  top: 50.0, bottom: 30.0, left: 30.0, right: 30.0),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   CircleAvatar(
                     child: Icon(
-                      Icons.list,
-                      size: 25.0,
+                      Icons.format_list_numbered_rtl_rounded,
+                      size: 30.0,
                     ),
                     backgroundColor: Colors.white,
                     radius: 20.0,
@@ -43,10 +43,10 @@ class TaskScreen extends StatelessWidget {
                     height: 15.0,
                   ),
                   Text(
-                    "Todoey",
+                    "TooDoo",
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 45.0,
+                      fontSize: 30.0,
                       fontWeight: FontWeight.w700,
                     ),
                   ),
@@ -54,7 +54,7 @@ class TaskScreen extends StatelessWidget {
                     ("${Provider.of<TaskData>(context).taskCount} Tasks"),
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: 18.0,
+                      fontSize: 15.0,
                       // fontWeight: FontWeight.w700,
                     ),
                   ),
